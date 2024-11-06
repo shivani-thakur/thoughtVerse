@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Thoughts Verse Platform Setup Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the setup guide for **Thoughts Verse Platform**. Follow these steps to set up, deploy, and run the application locally.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Make sure you have the following installed on your system:
 
-### `npm start`
+1. **Node.js and npm**: Install Node.js from [Node.js Official Website](https://nodejs.org).
+2. **Git**: Download from [Git's official website](https://git-scm.com).
+3. **MetaMask**: Set up an Ethereum wallet like [MetaMask](https://metamask.io).
+4. **Infura Account**: Register at [Infura](https://infura.io/) to obtain an Infura API key.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Step-by-Step Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. Clone the Repository
 
-### `npm test`
+In your terminal, clone this repository and navigate to the project directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/your-username/thoughts-verse-platform.git
+cd thoughts-verse-platform
+```
 
-### `npm run build`
+### 2. Install Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the following command to install all the required dependencies for both the backend and frontend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Environment Configuration
 
-### `npm run eject`
+This project requires an `.env` file to store sensitive information securely. A sample `.env` file has been included with placeholders for your Infura API key and private key.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Open `.env` and replace the placeholders with your actual values:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - **INFURA_API_KEY**: Obtain from [Infura](https://infura.io/) by registering and creating a project.
+  - **PRIVATE_KEY**: This is your wallet's private key. **Never share it publicly.**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Example `.env` file:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```env
+PRIVATE_KEY=your_wallet_private_key
+INFURA_API_KEY=your_infura_project_id
+```
 
-## Learn More
+### 4. Compile the Smart Contracts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Navigate to the smart contracts directory and compile them using Hardhat:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npx hardhat compile
+```
 
-### Code Splitting
+If successful, this will generate artifacts in the `artifacts` folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 5. Deploy the Smart Contract
 
-### Analyzing the Bundle Size
+Run the following command to deploy the contract to the Sepolia test network. Ensure you have Sepolia ETH in your wallet. You can get test ETH from a [Sepolia faucet](https://sepoliafaucet.com/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npx hardhat run scripts/deploy.js --network sepolia
+```
 
-### Making a Progressive Web App
+- After deployment, you’ll see the contract address printed in the terminal. **Copy this address for the next step.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 6. Update Contract Address in the Frontend
 
-### Advanced Configuration
+In the frontend configuration file `src/utils/contract.js`, replace the placeholder address with the newly deployed contract address:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```javascript
+// src/utils/contract.js
+export const contractAddress = '0xYourDeployedContractAddress';
+```
 
-### Deployment
+### 7. Copy ABI to Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+After deployment, copy the generated ABI (Application Binary Interface) JSON file to the frontend directory so it can interact with the smart contract.
 
-### `npm run build` fails to minify
+Run the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cp content-platform/artifacts/contracts/ContentPlatform.sol/ContentPlatform.json content-platform-frontend/src/abis/ContentPlatform.json
+```
+
+### 8. Start the Application
+
+Navigate to the frontend directory and start the React development server:
+
+```bash
+npm start
+```
+
+- Open your browser and go to `http://localhost:3000` to view the application.
+
+---
+
+## Summary of Commands
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/thoughts-verse-platform.git
+   cd thoughts-verse-platform
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Compile the contracts:
+   ```bash
+   npx hardhat compile
+   ```
+
+4. Deploy the contract:
+   ```bash
+   npx hardhat run scripts/deploy.js --network sepolia
+   ```
+
+5. Update `contract.js` with the deployed contract address.
+
+6. Copy the ABI:
+   ```bash
+   cp content-platform/artifacts/contracts/ContentPlatform.sol/ContentPlatform.json content-platform-frontend/src/abis/ContentPlatform.json
+   ```
+
+7. Start the application:
+   ```bash
+   npm start
+   ```
+
