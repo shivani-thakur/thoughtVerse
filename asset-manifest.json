@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/thoughtVerse/static/css/main.37edc6c6.css",
+    "main.js": "/thoughtVerse/static/js/main.bf9d3850.js",
+    "static/js/453.f49c6be3.chunk.js": "/thoughtVerse/static/js/453.f49c6be3.chunk.js",
+    "index.html": "/thoughtVerse/index.html",
+    "main.37edc6c6.css.map": "/thoughtVerse/static/css/main.37edc6c6.css.map",
+    "main.bf9d3850.js.map": "/thoughtVerse/static/js/main.bf9d3850.js.map",
+    "453.f49c6be3.chunk.js.map": "/thoughtVerse/static/js/453.f49c6be3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37edc6c6.css",
+    "static/js/main.bf9d3850.js"
+  ]
+}
