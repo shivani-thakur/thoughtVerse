@@ -124,7 +124,7 @@ npm start
 
 6. Copy the ABI:
    ```bash
-   cp content-platform/artifacts/contracts/ContentPlatform.sol/ContentPlatform.json content-platform-frontend/src/abis/ContentPlatform.json
+   cp artifacts/contracts/ContentPlatform.sol/ContentPlatform.json src/abis/
    ```
 
 7. Start the application:
