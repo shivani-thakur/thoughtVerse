@@ -124,6 +124,7 @@ npm start
 
 6. Copy the ABI:
    ```bash
+   mkdir src/abis/
    cp artifacts/contracts/ContentPlatform.sol/ContentPlatform.json src/abis/
    ```
 
