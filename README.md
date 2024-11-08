@@ -1,6 +1,6 @@
 # Thoughts Verse Platform Setup Guide
 
-Welcome to the setup guide for **Thoughts Verse Platform**. Follow these steps to set up, deploy, and run the application locally.
+Welcome to the setup guide for **Thoughts Verse Platform**. You can quickly set up, deploy, and run the application locally by following this guide.
 
 ## Prerequisites
 
@@ -11,7 +11,19 @@ Make sure you have the following installed on your system:
 3. **MetaMask**: Set up an Ethereum wallet like [MetaMask](https://metamask.io).
 4. **Infura Account**: Register at [Infura](https://infura.io/) to obtain an Infura API key.
 
-## Step-by-Step Setup
+## Quick Setup with `setup.sh`
+
+This repository includes a `setup.sh` file that automates the setup process. To get started, simply run:
+
+```bash
+./setup.sh
+```
+
+This script will handle cloning the repository, installing dependencies, configuring the environment, compiling and deploying smart contracts, and starting the application for you. 
+
+> **Note**: If you encounter any issues with the automated setup, you can manually complete each step by following the detailed instructions below.
+
+## Step-by-Step Manual Setup
 
 ### 1. Clone the Repository
 
@@ -132,4 +144,3 @@ npm start
    ```bash
    npm start
    ```
-
