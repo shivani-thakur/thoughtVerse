@@ -30,7 +30,7 @@ This script will handle cloning the repository, installing dependencies, configu
 In your terminal, clone this repository and navigate to the project directory:
 
 ```bash
-git clone https://github.com/your-username/thoughts-verse-platform.git
+git clone https://github.com/shivani-thakur/thoughtVerse.git
 cd thoughts-verse-platform
 ```
 
