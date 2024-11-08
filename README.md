@@ -83,8 +83,8 @@ npx hardhat run scripts/deploy.js --network sepolia
 In the frontend configuration file `src/components/utils/contract.js`, replace the placeholder address with the newly deployed contract address:
 
 ```javascript
-// src/utils/contract.js
-export const contractAddress = '0xYourDeployedContractAddress';
+// src/components/utils/contract.js
+export const contractAddress = 'Deployed_Contract_Address';
 ```
 
 ### 7. Copy ABI to Frontend
