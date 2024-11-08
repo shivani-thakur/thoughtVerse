@@ -68,7 +68,7 @@ npx hardhat run scripts/deploy.js --network sepolia
 
 ### 6. Update Contract Address in the Frontend
 
-In the frontend configuration file `src/utils/contract.js`, replace the placeholder address with the newly deployed contract address:
+In the frontend configuration file `src/components/utils/contract.js`, replace the placeholder address with the newly deployed contract address:
 
 ```javascript
 // src/utils/contract.js
